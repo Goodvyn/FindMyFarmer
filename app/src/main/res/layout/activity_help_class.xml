@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/anw1"
+        android:layout_width="210dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/in_the_farm_page_look_for_a_the_add_button_add_the_current_information_of_said_product_with_quantities"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/q1"
+        app:layout_constraintTop_toBottomOf="@+id/q1" />
+
+    <TextView
+        android:id="@+id/q1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/how_to_add_items"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="96dp"
+        android:text="@string/help"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="168dp"
+        android:text="@string/faq"
+        android:textAllCaps="false"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/contact_us"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView13"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="84dp"
+        android:text="@string/_905_768_7654"
+        android:textColor="#2196F3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:text="@string/support_findmyfarmer_org"
+        android:textColor="#2196F3"
+        app:layout_constraintBottom_toTopOf="@+id/textView14"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/q2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/how_to_manage_farms"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/anw1" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="322dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/go_to_hub_tab_press_the_plus_button_and_the_information_of_farm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/q2"
+        app:layout_constraintTop_toBottomOf="@+id/q2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

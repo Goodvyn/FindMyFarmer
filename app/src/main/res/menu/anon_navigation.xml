@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <item
+        android:id="@+id/nav_market"
+        android:icon="@drawable/market_selector"
+        android:title="Market"
+
+        >
+
+    </item>
+
+
+    <item
+        android:id="@+id/nav_maps"
+        android:icon="@drawable/maps_selector"
+        android:title="Map"
+
+        >
+
+    </item>
+</menu>

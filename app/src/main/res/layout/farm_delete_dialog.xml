@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#F8F1F1">
+
+    <Button
+        android:id="@+id/NoDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No"
+        app:layout_constraintBottom_toBottomOf="@+id/YesDelete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.684"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/YesDelete"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/YesDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:text="yes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/NoDelete"
+        app:layout_constraintHorizontal_bias="0.283"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Are you sure you want to Delete?"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/NoDelete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

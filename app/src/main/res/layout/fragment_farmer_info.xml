@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Customer.View.FarmerInfo"
+    tools:layout_editor_absoluteX="-4dp"
+    tools:layout_editor_absoluteY="-168dp">
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+
+        android:layout_gravity="center"
+        android:contentDescription="TODO"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/default_farm_image" />
+
+    <RatingBar
+        android:id="@+id/Ratings"
+        style="@android:style/Widget.Material.RatingBar.Indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:textAlignment="center"
+        android:theme="@style/Rating2"
+        app:layout_constraintEnd_toStartOf="@+id/RateIt"
+        app:layout_constraintStart_toEndOf="@+id/FollowIcon"
+        app:layout_constraintTop_toBottomOf="@+id/icon" />
+
+    <TextView
+        android:id="@+id/Address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Address"
+        android:textAlignment="center"
+        android:textColor="@color/colorTextPrimary"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Name" />
+
+    <TextView
+        android:id="@+id/Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Name"
+        android:textAlignment="center"
+        android:textColor="@color/colorTextPrimary"
+        android:textSize="24sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Ratings" />
+
+    <TextView
+        android:id="@+id/Desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/WhiteColor"
+        android:text="Description"
+        android:textAlignment="center"
+        android:textColor="@color/colorTextSecondar"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Address" />
+
+    <Button
+        android:id="@+id/Maps"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"
+        android:text="Open In Maps"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/RateIt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/review"
+        app:layout_constraintBottom_toBottomOf="@+id/Ratings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Ratings"
+        app:layout_constraintTop_toTopOf="@+id/Ratings" />
+
+    <ImageView
+        android:id="@+id/FollowIcon"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:src="@drawable/follow"
+        app:layout_constraintBottom_toBottomOf="@+id/Ratings"
+        app:layout_constraintEnd_toStartOf="@+id/Ratings"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Ratings"
+        app:srcCompat="@android:drawable/btn_star_big_off" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/Fruit_List"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/Maps"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Desc"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/fruit_card" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

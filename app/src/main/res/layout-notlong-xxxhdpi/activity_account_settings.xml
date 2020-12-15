@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/drawerLayout"
+    tools:context=".Users.AccountSettings">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/AccountSettingsConstraint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/account_bg"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <EditText
+            android:id="@+id/UpdatedCustomerName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="88dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/custom_input_registration"
+            android:drawableStart="@drawable/custom_name_icon"
+            android:drawablePadding="16dp"
+            android:ems="10"
+            android:fontFamily="@font/roboto_light"
+            android:hint="Enter name"
+            android:inputType="textPersonName"
+            android:padding="12dp"
+            android:textColor="@color/scheme_dark_green"
+            android:textColorHint="@color/scheme_medium_green"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarD" />
+
+        <EditText
+            android:id="@+id/UpdatedCustomerPassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/custom_input_registration"
+            android:drawableStart="@drawable/custom_password_icon"
+            android:drawablePadding="16dp"
+            android:ems="10"
+            android:fontFamily="@font/roboto_light"
+            android:hint="Enter password"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            android:textColor="@color/scheme_dark_green"
+            android:textColorHint="@color/scheme_medium_green"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/UpdatedCustomerEmail" />
+
+        <EditText
+            android:id="@+id/UpdatedCustomerEmail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/custom_input_registration"
+            android:drawableStart="@drawable/custom_email_icon"
+            android:drawablePadding="16dp"
+            android:ems="10"
+            android:fontFamily="@font/roboto_light"
+            android:hint="Enter email"
+            android:inputType="textEmailAddress"
+            android:padding="12dp"
+            android:textColor="@color/scheme_dark_green"
+            android:textColorHint="@color/scheme_medium_green"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/UpdatedCustomerName" />
+
+        <Button
+            android:id="@+id/Save"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="124dp"
+            android:background="@drawable/custom_round_button_save"
+            android:fontFamily="@font/roboto"
+            android:text="Save"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/nameLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/roboto"
+            android:text="Name"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/UpdatedCustomerName"
+            app:layout_constraintEnd_toEndOf="@+id/UpdatedCustomerName"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/UpdatedCustomerName" />
+
+        <TextView
+            android:id="@+id/emailLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text="Email"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/UpdatedCustomerEmail"
+            app:layout_constraintEnd_toEndOf="@+id/UpdatedCustomerEmail"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/UpdatedCustomerEmail" />
+
+        <TextView
+            android:id="@+id/passwordLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text="Password"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/UpdatedCustomerPassword"
+            app:layout_constraintEnd_toEndOf="@+id/UpdatedCustomerPassword"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/UpdatedCustomerPassword" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:subtitleTextColor="@color/WhiteColor"
+            app:titleTextColor="#FFFFFF"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:id="@+id/nav_view"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/drawer_menu"
+        />
+
+</androidx.drawerlayout.widget.DrawerLayout>
