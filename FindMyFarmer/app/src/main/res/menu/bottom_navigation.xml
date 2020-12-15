@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+   >
+
+    <item
+        android:id="@+id/nav_manage_hub"
+        android:icon="@drawable/hub_selector"
+        android:title="Hub"
+        android:visible="false"
+        >
+
+    </item>
+    <item
+        android:id="@+id/nav_market"
+        android:icon="@drawable/market_selector"
+        android:title="Market"
+
+        >
+
+    </item>
+    <item
+        android:id="@+id/nav_following"
+        android:icon="@drawable/following_selector"
+        android:title="Following"
+
+        >
+
+    </item>
+
+    <item
+        android:id="@+id/nav_maps"
+        android:icon="@drawable/maps_selector"
+        android:title="Map"
+
+        >
+
+    </item>
+
+</menu>
