@@ -52,6 +52,14 @@ class GetAllProducts(private val activity: Activity,private val adapter: FruitLi
         }).execute("/ProductsByFarmID/${id}")
     }
 
+    /**
+     * @edited Afsar Ahmed
+     * searches the current list for a certain product
+     * @param Productlistdata the current product that is being searched for
+     * @param products the list that holds data from the database
+     * @param id the current id of the product
+     * @param product information for product after search
+     */
     private fun ManageFarmProducts(Productlistdata: Product,products: ArrayList<Product>,id: Int,product: Product){
         DatabaseAPIHandler(activity, AsyncResponse {resp ->
             if(!(resp.isNullOrBlank())){

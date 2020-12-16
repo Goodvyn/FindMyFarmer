@@ -4,7 +4,7 @@
 package sheridan.capstone.findmyfarmer.FarmerListing.Controller
 
 /**
- * @author: Andrei Constantinecu
+ * @author: Andrei Constantinecu & Afsr Ahmed
  * Description:Sets up the farm list in the recycler view
  * @property: ArrayList<Farm> Sets up a Farm object in an array to be set up in the recycler view.
  * @property: OnItemClickListener sets up the interaction with the recycler in the Market Place.
@@ -33,6 +33,12 @@ class FarmListToView(val FarmList: ArrayList<Farm>, private val listener: OnItem
 
     private lateinit var FarmListAll :ArrayList<Farm>
 
+    /**
+     * creates the base layout of each row in the recyclerview
+     *
+     * @param parent used to set farmer_listing into current ViewGroup
+     * @param viewType used to change the size of each item, but was unused in this project
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.farmer_listing, parent, false)
         FarmListAll = ArrayList(FarmList)
@@ -40,9 +46,16 @@ class FarmListToView(val FarmList: ArrayList<Farm>, private val listener: OnItem
     }
 
 
-
+    /**
+     * gets the size of FarmList
+     */
     override fun getItemCount() = FarmList.size
 
+    /**
+     * loads itemview into ViewGroup
+     * @param holder the current view in the ViewGroup
+     * @param position the current position of MyViewHolder
+     */
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = FarmList[position]
 
@@ -56,11 +69,16 @@ class FarmListToView(val FarmList: ArrayList<Farm>, private val listener: OnItem
         holder.Followers.text = "Followers: ${currentItem.followers}"
     }
 
+
     override fun getFilter(): Filter {
         return filter
     }
 
+
     private var filter = object: Filter(){
+        /**
+         *@return
+         */
         override fun performFiltering(constraint: CharSequence?): FilterResults? {
 
             var filteredList = ArrayList<Farm>()
@@ -114,6 +132,10 @@ class FarmListToView(val FarmList: ArrayList<Farm>, private val listener: OnItem
 
     }
 
+    /**
+     * holds the current item within the RecylerView.
+     * @param itemView current view of the RecylcerView
+     */
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),View.OnClickListener {
 
         val imageView: RoundedImageView = itemView.ImageView
