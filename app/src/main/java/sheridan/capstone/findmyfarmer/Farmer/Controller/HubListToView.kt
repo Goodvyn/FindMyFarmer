@@ -1,5 +1,12 @@
 package sheridan.capstone.findmyfarmer.Farmer.Controller
 
+
+/**
+ * @Author:  Andrei Constantinescu
+ * Description: sets up and handles the recycler view in the Hub Fragment.
+ * Date Modified: December 14th, 2020
+ **/
+
 import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +22,7 @@ import sheridan.capstone.findmyfarmer.R
 
 class HubListToView (private val activity: Activity, val HubList: List<Farm>, private val listener: HubListToView.OnItemClickListener)
     : RecyclerView.Adapter<HubListToView.MyViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
         val itemView = LayoutInflater.from(parent.context).inflate(

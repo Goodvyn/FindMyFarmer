@@ -1,7 +1,4 @@
 package sheridan.capstone.findmyfarmer.Customer.View
-/**
- * @author: Andrei Constantinecu
- */
 
 
 import android.content.Context
@@ -27,12 +24,16 @@ import sheridan.capstone.findmyfarmer.Customer.Model.SharedViewModel
 import sheridan.capstone.findmyfarmer.R
 import java.util.*
 
+/**
+ * @author: Andrei Constantinecu
+ * Description: Sets up and shows the farmers location
+ * @return Fragment Map View
+ * Date Modified: December 14th, 2020
+ */
 
 class FarmersMap : Fragment(), OnMapReadyCallback {
 
-    /*
-    * @return Farmers Map fragment that instantiates the map view for the specific farm.
-    */
+
 
 
     private lateinit var address: Address
@@ -67,7 +68,9 @@ class FarmersMap : Fragment(), OnMapReadyCallback {
 
         mapview.getMapAsync(this)
 
-
+        /*
+           * @return Farmers Map fragment that instantiates the map view for the specific farm.
+           */
         return View
     }
 
