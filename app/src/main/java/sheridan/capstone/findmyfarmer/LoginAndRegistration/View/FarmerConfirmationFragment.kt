@@ -44,13 +44,9 @@ class FarmerConfirmationFragment : Fragment() {
 
         view.YesFarmerBtn.setOnClickListener{
             registrationInterface.OnSignUpButtonClickListener(email, name, password, true)
-            Log.d("ARGUMENT","No Farmer" +
-                    "\nEmail: $email\n Name: $name\n Password: $password\n")
         }
         view.NoFarmerBtn.setOnClickListener{
             registrationInterface.OnSignUpButtonClickListener(email, name, password, false)
-            Log.d("ARGUMENT","Yes Farmer" +
-                    "\nEmail: $email\n Name: $name\n Password: $password\n")
         }
         return view
     }

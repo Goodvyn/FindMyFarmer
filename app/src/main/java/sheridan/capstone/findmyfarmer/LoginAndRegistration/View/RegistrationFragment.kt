@@ -1,5 +1,12 @@
 package sheridan.capstone.findmyfarmer.LoginAndRegistration.View
 
+
+/**
+ * This fragment is responsible for getting the registration input and calling appropriate functions
+ * The information to be shown to user is passed to this class
+ * Date Modified: December 14th, 2020
+ **/
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -42,9 +49,6 @@ class RegistrationFragment : Fragment() {
         return view
     }
 
-
-    private fun sendData(){
-    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewBehaviorInterface = activity as ViewBehaviorInterface

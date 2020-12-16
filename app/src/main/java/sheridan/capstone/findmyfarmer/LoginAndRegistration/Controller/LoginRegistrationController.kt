@@ -74,7 +74,11 @@ class LoginRegistrationController : AppCompatActivity(), LoginRegistrationInterf
             }
         }
 
-        //if the email in reset is registered and reset password was sent - hide keyboard, show Toast
+        /**
+         * @author Nikita Kartavyi
+         * @Description: This segment of code is the observer which listens to changes of
+         * observed variables in ResetModel,LoginModel,RegistrationModel
+         */
         val resetObserver = Observer<Boolean> {
             newEmailStatus -> registeredUser = newEmailStatus
             var toastMessage: String = if(registeredUser){
@@ -104,6 +108,9 @@ class LoginRegistrationController : AppCompatActivity(), LoginRegistrationInterf
         updateUI(this,currentUser)
     }
 
+    /**
+     * @author Nikita Kartavyi
+     */
     //starts the google login pop-up, allowing the user to choose the google account for log in
     private fun googleLogIn(){
         //initializing google services for login
@@ -116,6 +123,9 @@ class LoginRegistrationController : AppCompatActivity(), LoginRegistrationInterf
         startActivityForResult(signInGoogle, RC_SIGN_IN)
     }
 
+    /**
+     * @author Nikita Kartavyi
+     */
     //After the user chooses the account (Facebook or google), this handles the user data returned
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -143,6 +153,9 @@ class LoginRegistrationController : AppCompatActivity(), LoginRegistrationInterf
         }
     }
 
+    /**
+     * @author Nikita Kartavyi & Sohaib Hussain
+     */
    //Opens next activity if the user signed in successfully
     private fun updateUI(context: Context, user: FirebaseUser?, extras: Bundle.() -> Unit = {}){
        var loggedIn : Intent
@@ -166,6 +179,10 @@ class LoginRegistrationController : AppCompatActivity(), LoginRegistrationInterf
        }
    }
 
+
+    /**
+     * @author Nikita Kartavyi
+     */
     //Run validation and login function with input provided by the user
     override fun OnLoginButtonClickListener(email: EditText, password: EditText) {
             if(loginModel.loginValidation(email, password)) {
@@ -175,23 +192,35 @@ class LoginRegistrationController : AppCompatActivity(), LoginRegistrationInterf
         }
     }
 
+    /**
+     * @author Nikita Kartavyi
+     */
     //When sign up button is clicked - parse the information to the input validation and then signUp
     override fun OnSignUpButtonClickListener(email: String, name: String, password: String, isFarmer: Boolean) {
             progressRegistration.visibility = ProgressBar.VISIBLE
             registerModel.register(auth,this,email,name,password,isFarmer,progressRegistration)
     }
 
+    /**
+     * @author Nikita Kartavyi
+     */
     //Open registration fragment on link click
     override fun OnRegisterLinkClickListener() {
         var navController = Navigation.findNavController(this,R.id.fragment_host)
         navController.navigate(R.id.action_loginFragment_to_registrationFragment)
     }
 
+    /**
+     * @author Nikita Kartavyi
+     */
     //When google Sign In button is pressed - call googleLogIn
     override fun OnGoogleButtonClickListener() {
         googleLogIn()
     }
 
+    /**
+     * @author Nikita Kartavyi
+     */
     //When facebook Sign In button is pressed - call facebook log in
     override fun OnFBLogInButtonClickListener() {
         FBSignIn.setPermissions("email")
@@ -212,12 +241,18 @@ class LoginRegistrationController : AppCompatActivity(), LoginRegistrationInterf
             })
     }
 
+    /**
+     * @author Nikita Kartavyi
+     */
     //open reset password fragment
     override fun OnResetPasswordButtonClickListener() {
         var navController = Navigation.findNavController(this,R.id.fragment_host)
         navController.navigate(R.id.action_loginFragment_to_resetPasswordFragment)
     }
 
+    /**
+     * @author Nikita Kartavyi
+     */
     //send the reset password link to the email
     override fun OnSendResetButtonClickListener(email: EditText) {
         if(resetModel.loginValidation(email)){
@@ -225,6 +260,9 @@ class LoginRegistrationController : AppCompatActivity(), LoginRegistrationInterf
         }
     }
 
+    /**
+     * @author Nikita Kartavyi
+     */
     //validation of the input for registration
     override fun Validation(email: EditText, name: EditText, password: EditText, repeatPassword: EditText):Boolean {
          val validatedSensitive = registerModel.registerValidation(email,password,repeatPassword)
@@ -232,19 +270,32 @@ class LoginRegistrationController : AppCompatActivity(), LoginRegistrationInterf
         return validatedSensitive && validatedName
     }
 
+    /**
+     * @author Nikita Kartavyi
+     */
     //navigation to the fragment via fragment navigation
     override fun Navigate(FragmentId: Int) {
         var navController = Navigation.findNavController(this,R.id.fragment_host)
         navController.navigate(FragmentId)
     }
 
+    /**
+     * @author Nikita Kartavyi
+     * @param [view] of type [View]
+     * @Description: Hides the keyboard, which is not implemented by default
+     */
     //hide the keyboard
     override fun hideKeyboard(view: View) {
         val imm = view.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
-    //request focus on from all the input fields and hide a keyboard if touched outside of the current input field
+    /**
+     * @author Nikita Kartavyi
+     * @param [view] of type [View]
+     * @Description: request focus on from all the input fields and hide a keyboard if touched
+     * outside of the current input field
+     */
     override fun viewBehavior(view: View) {
         view.requestFocus()
         view.setOnTouchListener{ view, m: MotionEvent ->

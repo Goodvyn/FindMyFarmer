@@ -32,8 +32,24 @@ class RegistrationModel:ViewModel() {
     }
     private lateinit var sessionData: SessionData
 
-    //registration of the user in the firebase and database with the validated user input
-    public fun register(auth: FirebaseAuth, activity: Activity, email: String,name:String, password: String,IsFarmer:Boolean,progressBar: ProgressBar) {
+    /**
+     * @author Nikita Kartavyi
+     * @param [auth] a reference to the user of type [FirebaseAuth]
+     * @param [activity] a reference to an activity in which the function is called
+     * @param [email] the [String] value of the email input
+     * @param [name] the [String] value of the name input
+     * @param [password] the [String] value of the password input
+     * @param [IsFarmer] the [Boolean] value of the type of the user (regular customer or a farmer)
+     * @param [progressBar] the reference to the loading progressBar of type [ProgressBar]
+     * @return void
+     *
+     * @Description: uses the parameters to register the user. Based on the [IsFarmer] parameter
+     * the appropriate record is created in the Relational Database and an account is created in
+     * Firebase. When the data is sent and waiting for the processing result - the [progressBar] is
+     * set to visible to indicate that the record is being validating in the backend.
+     */
+    public fun register(auth: FirebaseAuth, activity: Activity, email: String, name: String,
+                        password: String, IsFarmer: Boolean, progressBar: ProgressBar) {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(activity) { task ->
                 if (task.isSuccessful) {
@@ -43,12 +59,14 @@ class RegistrationModel:ViewModel() {
                     sessionData = SessionData(activity)
                     var customer = Customer(1,name,email,password,IsFarmer)
                     DatabaseAPIHandler(activity, AsyncResponse {
-                        var CustomerAdded = ObjectConverter.convertStringToObject(it,Customer::class.java,false) as Customer
+                        var CustomerAdded = ObjectConverter.convertStringToObject(it,
+                                Customer::class.java,false) as Customer
                         if(CustomerAdded != null){
                             if(customer.isFarmer){
                                 var farmer = Farmer(1,CustomerAdded.customerID)
                                 DatabaseAPIHandler(activity, AsyncResponse {it2 ->
-                                    var FarmerAdded = ObjectConverter.convertStringToObject(it2,Farmer::class.java,false) as Farmer
+                                    var FarmerAdded = ObjectConverter.convertStringToObject(it2,
+                                            Farmer::class.java,false) as Farmer
                                     if(FarmerAdded != null){
                                         sessionData.setUserDataForSession(FarmerAdded,CustomerAdded)
                                     }
@@ -70,14 +88,23 @@ class RegistrationModel:ViewModel() {
                     // If registration fails show log
                     progressBar.visibility = ProgressBar.GONE
                     user.value = null
-                    Toast.makeText(activity.applicationContext,"This email is in use already",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(activity.applicationContext,"This email is in use already",
+                            Toast.LENGTH_SHORT).show()
                     Log.d("REGISTRATION", "registration :failure")
                 }
             }
     }
 
 
-    //email validation using the custom regex pattern
+    /**
+     * @author Nikita Kartavyi
+     * @param [name] the reference to the view of type [EditText]
+     * @return nameValidated [Boolean]
+     *
+     * @Description: the input is parsed to the text and then validated with the Regex pattern.
+     * If the name is in proper format, the function returns [Boolean] true value and false if
+     * otherwise.
+     */
     public fun registerNameValidation(name: EditText):Boolean{
         var regexPattern= Regex("\\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+")
         var nameValidated = false
@@ -87,7 +114,6 @@ class RegistrationModel:ViewModel() {
             name.setError("Please enter properly formatted name")
         }
         return nameValidated
-
     }
 
     /**

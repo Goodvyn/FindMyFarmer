@@ -21,8 +21,14 @@ class ResetModel: ViewModel() {
         MutableLiveData<Boolean>()
     }
 
-    //takes email as the input parameter and passes it to the firebase to send the reset password
-    //after the user clicks on the link on their email - the get a browser input field for new password
+
+    /**
+     * @author Nikita Kartavyi
+     * @param [emailInput] is the view of type [EditText] which is used to get the email address
+     * of the user.
+     * @Description Firebase validates that this email is registered in the database.
+     * The variable [registeredEmail] is set to true or false depending on the result of the validation
+     */
     public fun sendResetPasswordEmail(emailInput: EditText){
         Log.d("RESET", "Entered Function")
         Firebase.auth.sendPasswordResetEmail(emailInput.text.toString())
@@ -37,7 +43,16 @@ class ResetModel: ViewModel() {
             }
     }
 
-    //validates the email address, to ensure that there is no unnecessary server processing
+
+    /**
+     * @author Nikita Kartavyi
+     * @param [emailInput] is the view of type [EditText] which is used to get the email address
+     * @return [Boolean] true or false based on the result of the validation
+     * of the user.
+     * @Description Validates the email address, to ensure that there is no unnecessary server
+     * processing. Sets the error message in the EditText which indicates if the input format is
+     * incorrect.
+     */
     public fun loginValidation(emailInput: EditText) : Boolean{
         var regexPattern= Regex("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,20}$")
         if(!android.util.Patterns.EMAIL_ADDRESS.matcher(emailInput.text).matches()){
@@ -46,3 +61,45 @@ class ResetModel: ViewModel() {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(emailInput.text).matches()
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

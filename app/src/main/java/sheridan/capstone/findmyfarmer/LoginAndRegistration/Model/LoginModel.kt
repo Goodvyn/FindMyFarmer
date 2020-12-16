@@ -34,6 +34,9 @@ class LoginModel:ViewModel() {
         MutableLiveData<FirebaseUser?>()
     }
 
+    /**
+     * @author Nikita Kartavyi & Sohaib Hussain
+     */
     //logs in user with right credentials
     public fun login(auth: FirebaseAuth, activity: Activity, email: String, password: String, loginProgressBar: ProgressBar){
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(activity) { task ->
@@ -75,6 +78,18 @@ class LoginModel:ViewModel() {
             }
     }
 
+    /**
+     * @author Sohaib Hussain
+     * @param [activity] of type [Activity]
+     * @param [auth] of type [FirebaseAuth]
+     * @param [idToken] of type [AccessToken]
+     * @param [bundle] of type [Bundle]
+     * @param [loginProgressBar] view of type [ProgressBar]
+     * @return void
+     * @Description: Registers the google Sign in as an authenticated user in Firebase
+     *
+     */
+
     //Registers the google Sign in as an authenticated user in Firebase, lasts only within a session
     public fun firebaseAuthWithGoogle(activity: Activity, auth: FirebaseAuth, idToken: String, bundle: Bundle?, loginProgressBar: ProgressBar) {
         val cred = GoogleAuthProvider.getCredential(idToken, null)
@@ -82,13 +97,26 @@ class LoginModel:ViewModel() {
         signInWithCredential(activity, cred, auth, "google",loginProgressBar)
     }
 
-    //Registers the facebook Sign in as an authenticated user in Firebase, lasts only within a session
+
+    /**
+     * @author Sohaib Hussain
+     * @param [activity] of type [Activity]
+     * @param [auth] of type [FirebaseAuth]
+     * @param [token] of type [AccessToken]
+     * @param [loginProgressBar] view of type [ProgressBar]
+     * @return void
+     * @Description: Registers the facebook Sign in as an authenticated user in Firebase
+     *
+     */
     public fun firebaseAuthWithFacebook(activity: Activity, auth: FirebaseAuth, token: AccessToken, loginProgressBar: ProgressBar){
         val cred =  FacebookAuthProvider.getCredential(token.token)
         loginProgressBar.visibility = ProgressBar.VISIBLE
         signInWithCredential(activity, cred, auth, "facebook",loginProgressBar)
     }
 
+    /**
+     * @author Nikita Kartavyi & Sohaib Hussain
+     */
     private fun signInWithCredential(activity: Activity, credential: AuthCredential, auth: FirebaseAuth, platform: String,loginProgressBar: ProgressBar){
         auth.signInWithCredential(credential).addOnCompleteListener(activity){ task ->
             if(task.isSuccessful){
@@ -146,7 +174,17 @@ class LoginModel:ViewModel() {
         }
     }
 
-    //validates the input in Email and Password fields according to the regex provided
+    /**
+     * @author Nikita Kartavyi
+     * @param [emailInput] the reference to the view of type [EditText]
+     * @param [passwordInput] the reference to the view of type [EditText]
+     * @return [Boolean]
+     *
+     * @Description: Validates the input in Email and Password fields according to
+     * the regex provided. Returns true if the email and password match the format. Password is
+     * compared to the custom Regex patter and email is the Kotlin built-in email format.
+     * If false - the appropriate error message is displayed in the input field.
+     */
     fun loginValidation(emailInput: EditText, passwordInput: EditText) : Boolean{
         var regexPattern= Regex("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,20}$")
         if(!android.util.Patterns.EMAIL_ADDRESS.matcher(emailInput.text).matches()){
@@ -157,7 +195,6 @@ class LoginModel:ViewModel() {
                 "Password must be 6 to 20 characters." +
                         " Password must include letters and numbers"
             )
-
         }
         return android.util.Patterns.EMAIL_ADDRESS.matcher(emailInput.text).matches() &&
                 passwordInput.text.matches(regexPattern)
