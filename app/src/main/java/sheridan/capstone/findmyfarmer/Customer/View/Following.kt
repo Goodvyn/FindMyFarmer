@@ -28,7 +28,6 @@ import sheridan.capstone.findmyfarmer.Users.FarmerActivity
 /**
  * @author: Andrei Constantinecu
  * Description: Sets up the following fragment list
- * @return Following fragment view
  * Date Modified: December 14th, 2020
  */
 

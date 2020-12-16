@@ -33,7 +33,7 @@ class FollowingDialog(val imageView: ImageView): AppCompatDialogFragment() {
 
     /**
      * Creates the following dialog to be displayed
-     * @return a dialog
+     * @return a custom layout dialog box
      */
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

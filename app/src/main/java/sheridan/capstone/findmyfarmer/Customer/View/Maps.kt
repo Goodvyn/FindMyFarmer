@@ -54,7 +54,6 @@ import java.util.*
  * @Author:  Andrei Constantinescu
  * Description: Sets up the map view
  * Date Modified: December 14th, 2020
- * @return Farmers Map fragment that displays the map view of all farms near user.
  **/
 
 class Maps : Fragment(),OnMapReadyCallback,GoogleApiClient.ConnectionCallbacks,
@@ -268,6 +267,11 @@ class Maps : Fragment(),OnMapReadyCallback,GoogleApiClient.ConnectionCallbacks,
 
 
     private val MY_PERMISSIONS_REQUEST_LOCATION = 99
+
+  /*
+  *@author: Andrei Constantinescu
+  *Checks if the user has accepted map permission.
+   */
     private fun checkLocationPermission() {
         if (ContextCompat.checkSelfPermission(
                 requireActivity(),

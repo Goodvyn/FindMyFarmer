@@ -3,7 +3,10 @@ package sheridan.capstone.findmyfarmer.Farmer.Controller
 
 /**
  * @Author:  Andrei Constantinescu
- * Description: sets up and handles the recycler view in the Hub Fragment.
+ * Description: sets up and handles the recycler view in the Hub Fragment
+ * @property : Activity object that references the activity the fragment belongs to
+ * @property: List<Farm> a list object of Farm
+ * @property: OnItemClickListener allows the user to interact with his farm in hub.
  * Date Modified: December 14th, 2020
  **/
 

@@ -27,7 +27,6 @@ import java.util.*
 /**
  * @author: Andrei Constantinecu
  * Description: Sets up and shows the farmers location
- * @return Fragment Map View
  * Date Modified: December 14th, 2020
  */
 
@@ -49,6 +48,7 @@ class FarmersMap : Fragment(), OnMapReadyCallback {
 
     
     override fun onCreateView(
+
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
