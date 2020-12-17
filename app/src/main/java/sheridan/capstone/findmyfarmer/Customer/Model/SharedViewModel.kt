@@ -2,7 +2,7 @@ package sheridan.capstone.findmyfarmer.Customer.Model
 
 /**
 @author Andrei Constantinescu
- * Sets up the shared view model class
+ * Description: Sets up the shared view model class
  **/
 
 import android.graphics.Bitmap

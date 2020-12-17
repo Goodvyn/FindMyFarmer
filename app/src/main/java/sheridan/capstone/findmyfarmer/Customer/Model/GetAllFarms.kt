@@ -6,7 +6,6 @@ import android.os.Build
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.SearchView
-import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.firebase.storage.StorageReference
 import sheridan.capstone.findmyfarmer.Database.AsyncResponse
@@ -20,18 +19,38 @@ import sheridan.capstone.findmyfarmer.ImageHandler.DirectoryName
 import sheridan.capstone.findmyfarmer.ImageHandler.FirebaseImagehandler
 import sheridan.capstone.findmyfarmer.ImageHandler.StorageResponse
 import sheridan.capstone.findmyfarmer.SessionDataHandler.SessionData
+import sheridan.capstone.findmyfarmer.Customer.View.MarketPlace
 import java.util.*
-import kotlin.collections.ArrayList
 
 /**
  * @author Sohaib Hussain
  * Description: Handles Retrieving all the farms for public view. This includes retrieving followers
  *              images etc.
+ * @property activity reference to the activity this class is being used in
+ * @property swipeRefreshLayout access to the swipe refresh functionality for animating the progress
+ *                              bar accurately
+ * @property adapter Instance of FarmerListView adapter for controlling recyclerview data view
+ * @property searchBar Instance of the searchview to have accurate searches of farms
+ * @property overlay Instance of Views to limit users from clicking on the recycler view while it is
+ *                   being loaded
  * Date Modified: December 14th, 2020
  **/
 class GetAllFarms(val activity: Activity, val swipeRefreshLayout: SwipeRefreshLayout,val adapter: FarmListToView,val searchBar: SearchView,val overlay: ArrayList<View>) {
 
+    //Used for accessing customer data for the session
     private lateinit var sessionData: SessionData
+
+    /**
+     * Gets all the farms
+     * Gets Number of followers of the farm
+     * Gets if the farm is followed by the current user or not
+     * Gets the Rating of the Farm
+     *
+     * @param Farms list of farms that are updated when farms are retrieived from the database,
+     *              after this list is updated the adapter is notified for changes which updates the
+     *              recycler view
+     * @see MarketPlace usage of this function
+     */
     fun GetFarms(Farms: ArrayList<Farm>){
         sessionData = SessionData(activity)
         var customer = sessionData.customerData
@@ -67,6 +86,11 @@ class GetAllFarms(val activity: Activity, val swipeRefreshLayout: SwipeRefreshLa
             }
         }).execute("/Farms")
     }
+
+    /**
+     * Helper function to avoid repetition of code
+     * @see GetFarms for usage
+     */
     private fun ProcessFarms(customer: Customer?,farmlistdata:Farm,Farms: ArrayList<Farm>){
         if(customer != null){
             DatabaseAPIHandler(activity, AsyncResponse {resp ->

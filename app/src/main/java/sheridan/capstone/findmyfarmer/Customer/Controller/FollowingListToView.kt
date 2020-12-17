@@ -16,6 +16,8 @@ import sheridan.capstone.findmyfarmer.R
  * @author Sohaib Hussain
  * Description: Adapter for RecyclerView.Takes the Followed Farms and displays them on the
  *              recyclerview.
+ * @property FavouriteList is a list of Farms followed by the user
+ * @property listener  event listener for each row clicked
  * Date Modified: December 14th, 2020
  **/
 

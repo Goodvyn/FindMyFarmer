@@ -24,7 +24,6 @@ import sheridan.capstone.findmyfarmer.SessionDataHandler.SessionData
 private lateinit var Add_To_Following : Button
 private lateinit var FarmImage : ImageView
 private lateinit var FarmName: TextView
-private  var Image : Int = 0
 private var Farm_City_View = ""
 private var Farm_Desc_View = ""
 
@@ -33,7 +32,7 @@ class FollowingDialog(val imageView: ImageView): AppCompatDialogFragment() {
 
     /**
      * Creates the following dialog to be displayed
-     * @return a dialog
+     * @return a custom layout dialog box
      */
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

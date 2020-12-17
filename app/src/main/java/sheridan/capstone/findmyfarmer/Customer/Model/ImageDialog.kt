@@ -38,6 +38,7 @@ import java.util.*
  *              The customer can add an image from phone gallery or camera and once they add an
  *              image, the image is saved in the farm gallery, where the user can pick their primary
  *              image.
+ * @property directoryName name of the directory
  * Date Modified: December 14th, 2020
  **/
 class ImageDialog(directoryName: DirectoryName): AppCompatDialogFragment(){
@@ -54,6 +55,10 @@ class ImageDialog(directoryName: DirectoryName): AppCompatDialogFragment(){
         val inflater = requireActivity().layoutInflater
         val view = inflater.inflate(R.layout.image_dialog,null)
         viewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+
+        /**
+         * Checks if this directory is Farm directory or a Customer directory
+         */
         if(directoryName == DirectoryName.Farm){
             var farm = viewModel.getFarmData().value
             if (farm != null) {
@@ -78,7 +83,10 @@ class ImageDialog(directoryName: DirectoryName): AppCompatDialogFragment(){
         val galleryButton = view.findViewById<Button>(R.id.gallery)
         val FarmgalleryButton = view.findViewById<Button>(R.id.FarmGallery)
 
-
+        /**
+         * Catches result of the Gallery activity, return the image the user picks a picture
+         * from their gallery
+         */
         val startForResult =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
                 if (result.resultCode == Activity.RESULT_OK) {
@@ -112,6 +120,9 @@ class ImageDialog(directoryName: DirectoryName): AppCompatDialogFragment(){
                 }
             }
 
+        /**
+         * Catches the result of the camera activity, returns the image the user clicks
+         */
         val startCameraForResult =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
                 if (result.resultCode == Activity.RESULT_OK) {

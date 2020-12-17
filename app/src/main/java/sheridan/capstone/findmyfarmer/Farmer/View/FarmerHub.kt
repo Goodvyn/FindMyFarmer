@@ -1,5 +1,12 @@
 package sheridan.capstone.findmyfarmer.Farmer.View
 
+
+/**
+ * @Author:  Andrei Constantinescu
+ * Sets up the Farmers Hub Page
+ * Date Modified: December 14th, 2020
+ **/
+
 import android.annotation.SuppressLint
 import android.graphics.Canvas
 import android.graphics.Color
@@ -32,6 +39,9 @@ import sheridan.capstone.findmyfarmer.SessionDataHandler.SessionData
 
 class FarmerHub : Fragment(),HubListToView.OnItemClickListener {
 
+    /**
+     * @return the fragment view
+     **/
 
     private lateinit var viewModel: SharedViewModel
     private lateinit var sessionData: SessionData

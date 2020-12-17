@@ -1,8 +1,9 @@
 package sheridan.capstone.findmyfarmer.Users
 
 /**
- * Author:  Andrei Constantinescu
- * Sets up the account settings
+ * @author Sohaib Hussain
+ * Description: Sets up the account settings
+ * Date Modified: December 14th, 2020
  **/
 
 import android.content.Context
@@ -90,8 +91,7 @@ class AccountSettings : AppCompatActivity(),NavigationView.OnNavigationItemSelec
             var updatedname = updatedName.text.toString()
             var updatedpassword = updatedPassword.text.toString()
             var customerDBHandler = CustomerDBHandler(this)
-            //checks if the user has been logged in with facebook or google
-
+            
             if(!updatedemail.isNullOrEmpty()){
                 if(!android.util.Patterns.EMAIL_ADDRESS.matcher(updatedemail).matches()){
                     updatedEmail.setError("Wrong email")

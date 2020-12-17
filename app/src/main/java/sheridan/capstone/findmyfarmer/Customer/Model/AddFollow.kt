@@ -10,11 +10,19 @@ import sheridan.capstone.findmyfarmer.Entities.Following
 /**
  * @author Sohaib Hussain
  * Description: Handles adding a farm followed by customer to the database
+ * @property activity reference of the activity this class is being used in.
+ * @property dialogue reference of the dialog box that pops up when user follows a farm
+ * @property imageView reference to the image button for favourites, changes the button to off when
+ *                      unsubscribed and on for when subsribed
  * Date Modified: December 14th, 2020
  **/
 class AddFollow(private val activity: Activity, private val dialogue: FollowingDialog,private val imageView: ImageView) {
 
-    //Adds a follow
+    /**
+     * Inserts the farm followed in the database
+     * @param following Instance of Following to be added to the database
+     * @see FollowingDialog usage of this function in the FollowingDialog class
+     */
     fun addfollow(following: Following){
         DatabaseAPIHandler(activity, AsyncResponse {
             Toast.makeText(activity,"Following!", Toast.LENGTH_SHORT).show()

@@ -38,11 +38,11 @@
             android:id="@+id/Fruit_name"
             style="bold"
 
-            android:layout_width="124dp"
-            android:layout_height="33dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="28dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="32dp"
             android:focusable="true"
             android:paddingTop="15dp"
             android:text="Name"
@@ -68,59 +68,15 @@
             app:layout_constraintStart_toStartOf="@id/Fruit_name"
             app:layout_constraintTop_toBottomOf="@+id/Fruit_name" />
 
-        <TableLayout
-            android:id="@+id/tableLayout2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@+id/Fruit_Category"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/Fruit_Category"
-            app:layout_constraintTop_toBottomOf="@+id/Fruit_Category">
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <Button
-                    android:id="@+id/minusOne"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:minWidth="0dp"
-                    android:minHeight="0dp"
-                    android:text="-" />
-
-                <EditText
-                    android:id="@+id/quantity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:ems="3"
-                    android:enabled="false"
-                    android:inputType="number" />
-
-                <Button
-                    android:id="@+id/AddOne"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:minWidth="0dp"
-                    android:minHeight="0dp"
-                    android:text="+" />
-
-            </TableRow>
-
-        </TableLayout>
-
         <Spinner
             android:id="@+id/MeasurementType"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginEnd="2dp"
-            app:layout_constraintBottom_toBottomOf="@+id/tableLayout2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/tableLayout2"
-            app:layout_constraintTop_toBottomOf="@+id/Fruit_Category"
-            app:layout_constraintVertical_bias="0.444" />
+            android:layout_marginTop="8dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="@+id/Fruit_Category"
+            app:layout_constraintStart_toStartOf="@+id/Fruit_Category"
+            app:layout_constraintTop_toBottomOf="@+id/Fruit_Category" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
