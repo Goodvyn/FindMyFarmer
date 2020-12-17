@@ -49,6 +49,12 @@ public class FirebaseImagehandler {
     private Context context;
     private String ACTIVE_KEYWORD = "ACTIVE";
 
+    /**
+     * Main contructor
+     * @param directoryName Name of the directory to be accessed
+     * @param id identifier, usually the unique id given to an object
+     * @param context reference to the context this class is being used in
+     */
     public FirebaseImagehandler(DirectoryName directoryName, int id, Context context){
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
@@ -57,13 +63,19 @@ public class FirebaseImagehandler {
         this.context = context;
     }
 
-    //generates a unique filename
+    /**
+     * generates the filename based on the given directory name and id
+     * @return name of the file
+     */
     private String generateFileName(){
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyymmddhhmmss");
         String date = dateFormat.format(new Date());
         return FolderName + "_" + date + ".jpg";
     }
-    //gets the list of images from Firebase based on directoryname and id given
+    /**
+     * gets the list of images from Firebase based on directoryname and id given
+     * @param storageResponse Interface to handle events
+     */
     public void GetAllFirebaseImageNames(StorageResponse storageResponse) {
         StorageReference listRef = storage.getReference().child(FolderName);
         listRef.listAll().addOnSuccessListener(listResult -> {
@@ -73,7 +85,12 @@ public class FirebaseImagehandler {
             System.out.println(e);
         });
     }
-    //downloads all images from Firebase to internal storage
+    /**
+     * downloads all images from Firebase to internal storage
+     * @param filenames names of files (Images)
+     * @param index index of the  list
+     * @param response Interface to handle events
+     */
     private void DownloadImagesFromFirebaseToLocalStorage(List<String> filenames, int index,StorageResponse response){
         final long TEN_MEGABYTE = 1024 * 1024 * 10;
 
@@ -84,7 +101,6 @@ public class FirebaseImagehandler {
             downloadRef.getBytes(TEN_MEGABYTE).addOnSuccessListener(bytes -> {
                 Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
                 saveToInternalStorage(bitmap,filenames.get(index));
-                //Toast.makeText(context,"Downloaded " + filenames.get(index) ,Toast.LENGTH_SHORT).show();
                 DownloadImagesFromFirebaseToLocalStorage(filenames,index+1,response);
 
             }).addOnFailureListener(e -> {
@@ -97,10 +113,11 @@ public class FirebaseImagehandler {
             return;
         }
     }
-    /*
-        Checks if the images in cloud have been downloaded, if there are any new files from cloud
-        then they are downloaded into local storage
-    */
+    /**
+     * Checks if the images in cloud have been downloaded, if there are any new files from cloud
+     * then they are downloaded into local storage
+     * @param storageResponse Interface to handle events
+     */
     private void InitializeImages(StorageResponse storageResponse){
             GetAllFirebaseImageNames(new StorageResponse() {
                 @Override
@@ -122,10 +139,11 @@ public class FirebaseImagehandler {
                 }
             });
     }
-    /*
-        checks if there are any extra images that have been deleted from the cloud,
-        and are then removed from the local storage as well
-    */
+    /**
+     * checks if there are any extra images that have been deleted from the cloud,
+     * and are then removed from the local storage as well
+     * @param response Interface to handle events
+     */
     public void RefreshLocalStorage(StorageResponse response){
         List<String> localStorageImages = GetNamesOfImagesInLocalStorage();
         if(!(localStorageImages.isEmpty())){
@@ -154,7 +172,11 @@ public class FirebaseImagehandler {
             InitializeImages(response);
         }
     }
-    //uploads the image to Firebase
+    /**
+     * uploads the image to Firebase
+     * @param bitmap the image to be uploaded
+     * @param response Interface to handle events
+     */
     public void UploadImageToFirebase(Bitmap bitmap,StorageResponse response){
         try {
             StorageReference ref = storageReference.child(FolderName + "/" + generateFileName());
@@ -175,7 +197,12 @@ public class FirebaseImagehandler {
             response.OnErrorListener(ex.toString());
         }
     }
-    //uploads the image to Firebase with a custom name
+    /**
+     * uploads the image to Firebase with a custom name
+     * @param bitmap the image to be renamed
+     * @param NewFileName new Name of the file
+     * @param response Interface to handle events
+     */
     private void UploadImageToFirebasewithCustomName(Bitmap bitmap,String NewFileName,StorageResponse response){
         try {
             StorageReference ref = storageReference.child(FolderName + "/" + NewFileName);
@@ -196,7 +223,11 @@ public class FirebaseImagehandler {
             response.OnErrorListener(ex.toString());
         }
     }
-    //Retrieves an Image from Firebase using filename
+    /**
+     * Retrieves an Image from Firebase using filename
+     * @param fileName name of the image to get
+     * @param storageResponse Interface to handle events
+     */
     private void GetImageFromFirebase(String fileName,StorageResponse storageResponse){
         GetAllFirebaseImageNames(new StorageResponse() {
             @RequiresApi(api = Build.VERSION_CODES.N)
@@ -222,7 +253,11 @@ public class FirebaseImagehandler {
             }
         });
     }
-    //Deletes an image from the Firebase using filename
+    /**
+     * Deletes an image from the Firebase using filename
+     * @param fileName name of the image to delete
+     * @param storageResponse Interface to handle events
+     */
     public void DeleteImageFromFirebase(String fileName, StorageResponse storageResponse){
         StorageReference ref = storageReference.child(FolderName + "/" + fileName);
 
@@ -232,7 +267,13 @@ public class FirebaseImagehandler {
         }).addOnFailureListener(e ->
                 storageResponse.OnErrorListener(e.toString()));
     }
-    //Renames images in Firebase
+    /**
+     * This function is soleley used to rename images in Firebase, since there is no direct way to
+     * rename files in firebase , this was a work around it.
+     * @param fileName name of the image to be renamed
+     * @param newName  new name of the image to be renamed to
+     * @param storageResponse Interface to handle events
+     */
     private void RenameFileFirebase(String fileName,String newName, StorageResponse storageResponse){
         GetAllFirebaseImageNames(new StorageResponse() {
             @Override
@@ -279,7 +320,10 @@ public class FirebaseImagehandler {
             }
         });
     }
-    //Retrieves the bitmap of the Primary Image
+    /**
+     * Retrieves the bitmap of the Primary Image
+     * @param storageResponse Interface to handle events
+     */
     public void GetPrimaryImageFromFirebase(StorageResponse storageResponse){
         GetAllFirebaseImageNames(new StorageResponse() {
             StorageReference reference = null;
@@ -315,7 +359,10 @@ public class FirebaseImagehandler {
             }
         });
     }
-    //Retrieves the URL of the Primary Image
+    /**
+     * Retrieves the URL of the Primary Image
+     * @param storageResponse Interface to handle events
+     */
     public void GetPrimaryImageFromFirebaseURL(StorageResponse storageResponse){
         GetAllFirebaseImageNames(new StorageResponse() {
             boolean NoPrimaryImageExists = true;
@@ -352,7 +399,11 @@ public class FirebaseImagehandler {
             }
         });
     }
-    //Retrieves the URL of any image in the Firebase
+    /**
+     * Retrieves the URL of any image in the Firebase
+     * @param fileName name of image to retrieve
+     * @param storageResponse Interface to handle events
+     */
     public void GetImageURLFromFirebase(String fileName,StorageResponse storageResponse){
         GetAllFirebaseImageNames(new StorageResponse() {
             StorageReference reference = null;
@@ -390,7 +441,11 @@ public class FirebaseImagehandler {
             }
         });
     }
-    //Makes an Image Primary Image in Firebase
+    /**
+     * Makes an Image Primary Image in Firebase
+     * @param fileName name of the image to make primary
+     * @param storageResponse Interface to handle events
+     */
     public void MakeImagePrimary(String fileName,StorageResponse storageResponse){
         GetPrimaryImageFromFirebase(new StorageResponse() {
             @Override
@@ -505,7 +560,12 @@ public class FirebaseImagehandler {
             }
         });
     }
-    //saves the image to internal storage, using the given filename
+    /**
+     * saves the image to internal storage, using the given filename
+     * @param bitmapImage bitmap of the image
+     * @param fileName name of the image
+     * @return path of this image that is stored in the local storage
+     */
     private String saveToInternalStorage(Bitmap bitmapImage,String fileName){
         ContextWrapper cw = new ContextWrapper(context);
         File directory = cw.getDir(FolderName, Context.MODE_PRIVATE);
@@ -529,7 +589,11 @@ public class FirebaseImagehandler {
 
 
     }
-    //loads the image from local storage based on filename
+    /**
+     * loads the image from local storage based on filename
+     * @param fileName name of image to be loaded from local storage
+     * @return Bitmap format of the image
+     */
     public Bitmap loadImageFromStorage(String fileName) {
         try {
             ContextWrapper cw = new ContextWrapper(context);
@@ -545,7 +609,10 @@ public class FirebaseImagehandler {
         }
 
     }
-    //Deletes the File from local Storage
+    /**
+     * Deletes the File from local Storage
+     * @param fileName name of the image to be deleted from local storage
+     */
     private void DeleteImageFromlocalStorage(String fileName){
         try{
             ContextWrapper cw = new ContextWrapper(context);
@@ -557,7 +624,10 @@ public class FirebaseImagehandler {
             System.out.println(ex);
         }
     }
-    //Gets the Names of Images in Local Storage
+    /**
+     * Gets the Names of Images in Local Storage
+     * @return list of names of images in the local storage
+     */
     public List<String> GetNamesOfImagesInLocalStorage(){
 
         List<String> files = new ArrayList();

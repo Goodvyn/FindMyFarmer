@@ -1,8 +1,8 @@
 package sheridan.capstone.findmyfarmer
 
 /**
- * Author:  Andrei Constantinescu
- * Sets up the splash screen
+ * @Author:  Andrei Constantinescu
+ * Description: Sets up the splash screen
  **/
 
 import android.content.Intent

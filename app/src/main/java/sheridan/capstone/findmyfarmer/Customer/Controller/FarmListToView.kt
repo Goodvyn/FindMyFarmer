@@ -5,7 +5,10 @@ package sheridan.capstone.findmyfarmer.FarmerListing.Controller
 
 /**
  * @author: Andrei Constantinecu
- * Sets up the farm list in the recycler view
+ * Description:Sets up the farm list in the recycler view
+ * @property: ArrayList<Farm> Sets up a Farm object in an array to be set up in the recycler view.
+ * @property: OnItemClickListener sets up the interaction with the recycler in the Market Place.
+ * Date Modified: December 14th, 2020
  */
 
 import android.view.LayoutInflater

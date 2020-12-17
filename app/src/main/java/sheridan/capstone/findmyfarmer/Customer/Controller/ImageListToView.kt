@@ -15,6 +15,8 @@ import sheridan.capstone.findmyfarmer.R
  * @author Sohaib Hussain
  * Description: Adapter for RecyclerView.Takes the List of Images and displays them on the
  *              recyclerview horizontally
+ * @property imageList is a list of images uploaded by the user
+ * @property listener  event listener for each row clicked
  * Date Modified: December 14th, 2020
  **/
 class ImageListToView (private val imageList: List<Bitmap>, private val listener: ImageListToView.OnItemClickListener)

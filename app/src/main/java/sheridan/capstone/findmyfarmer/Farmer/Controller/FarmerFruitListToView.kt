@@ -67,10 +67,9 @@ class FarmerFruitListToView (private val activity: Activity, var farmid : Int, v
         }
         holder.Fruit_Name.text = currentItem.productName
         holder.Fruit_Cat.text = currentItem.productCategory
-        holder.Fruit_quantity.setText(currentItem.quantity.toString())
-        var measurements = activity.resources.getStringArray(R.array.Product_Measurement_Units)
-        var index = measurements.indexOf(FruitList[position].unit)
-        holder.measurements.setSelection(index)
+        var measurements = activity.resources.getStringArray(R.array.Product_Status)
+        var index = measurements.indexOf(FruitList[position].status)
+        holder.productStatus.setSelection(index)
     }
 
     /*
@@ -83,11 +82,7 @@ class FarmerFruitListToView (private val activity: Activity, var farmid : Int, v
         val Fruit_Image : RoundedImageView = itemView.Fruit_img
         val Fruit_Name: TextView = itemView.Fruit_name
         val Fruit_Cat: TextView = itemView.Fruit_Category
-        val Fruit_quantity :EditText = itemView.quantity
-        val addOne : Button = itemView.AddOne
-        val removeOne : Button = itemView.minusOne
-        val measurements: Spinner = itemView.MeasurementType
-        val FarmerCL : ConstraintLayout = itemView.FarmerFruitCL
+        val productStatus: Spinner = itemView.MeasurementType
 
 
         init {
@@ -95,59 +90,22 @@ class FarmerFruitListToView (private val activity: Activity, var farmid : Int, v
             var productManager = ProductManager(activity)
             ArrayAdapter.createFromResource(
                 activity,
-                R.array.Product_Measurement_Units,
+                R.array.Product_Status,
                 android.R.layout.simple_spinner_item
             ).also { arrayAdapter ->
                 arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
-                measurements.adapter = arrayAdapter
-            }
-
-            FarmerCL.setOnClickListener {
-                Fruit_quantity.isEnabled = true
-                if(Fruit_quantity.isFocused){
-                    Fruit_quantity.clearFocus()
-                }
-                else{
-                    Fruit_quantity.requestFocus()
-                }
+                productStatus.adapter = arrayAdapter
             }
 
 
-            Fruit_quantity.setOnFocusChangeListener { v, hasFocus ->
-                if(!hasFocus){
-                    var updatedQuantity = (Fruit_quantity.text.toString().toInt())
-                    var unit = measurements.selectedItem.toString()
-                    if(updatedQuantity <= 999 || updatedQuantity >= 0){
-                        productManager.UpdateQuantity(updatedQuantity,unit,FruitList.get(adapterPosition).productID,farmid,Fruit_quantity)
-                    }
-                }
-            }
 
-            measurements.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+            productStatus.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
                 override fun onItemSelected(parent: AdapterView<*>?,view: View?,position: Int,id: Long) {
-                    var updatedQuantity = (Fruit_quantity.text.toString().toInt())
-                    var unit = measurements.selectedItem.toString()
-                    if(updatedQuantity <= 999 || updatedQuantity >= 0){
-                        productManager.UpdateQuantity(updatedQuantity,unit,FruitList.get(adapterPosition).productID,farmid,Fruit_quantity)
-                    }
+                    var status = productStatus.selectedItem.toString()
+                    productManager.UpdateStatus(status,FruitList.get(adapterPosition).productID,farmid,productStatus)
+
                 }
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
-            }
-
-            addOne.setOnClickListener {
-                var updatedQuantity = (Fruit_quantity.text.toString().toInt()) + 1
-                var unit = measurements.selectedItem.toString()
-                if(updatedQuantity <= 999){
-                    productManager.UpdateQuantity(updatedQuantity,unit,FruitList.get(adapterPosition).productID,farmid,Fruit_quantity)
-                }
-            }
-
-            removeOne.setOnClickListener {
-                var updatedQuantity = (Fruit_quantity.text.toString().toInt()) - 1
-                var unit = measurements.selectedItem.toString()
-                if(updatedQuantity >= 0){
-                    productManager.UpdateQuantity(updatedQuantity,unit,FruitList.get(adapterPosition).productID,farmid,Fruit_quantity)
-                }
             }
 
         }

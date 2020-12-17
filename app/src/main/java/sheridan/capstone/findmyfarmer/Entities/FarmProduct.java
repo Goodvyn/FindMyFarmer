@@ -11,33 +11,29 @@ public class FarmProduct {
     private int FarmProductID;
     private int FarmID;
     private int ProductID;
-    private int Quantity;
-    private String Unit;
+    private String Status;
 
     //Empty constructor
     public FarmProduct(){ }
 
     //Main constructor
-    public FarmProduct(int FarmProductID, int FarmID, int ProductID,int Quantity,String Unit){
+    public FarmProduct(int FarmProductID, int FarmID, int ProductID,String Status){
         this.FarmProductID = FarmProductID;
         this.FarmID = FarmID;
         this.ProductID = ProductID;
-        this.Quantity = Quantity;
-        this.Unit = Unit;
+        this.Status = Status;
     }
 
     //Setters
     public void setFarmerID(int farmerID) { FarmID = farmerID; }
     public void setProductID(int productID) { ProductID = productID; }
-    public void setQuantity(int quantity) { Quantity = quantity; }
-    public void setUnit(String unit) { Unit = unit; }
+    public void setStatus(String status) { Status = status; }
 
     //Getters
     public int getFarmerID() { return FarmID; }
     public int getFarmProductID() { return FarmProductID; }
     public int getProductID() { return ProductID; }
-    public int getQuantity() { return Quantity; }
-    public String getUnit() { return Unit; }
+    public String getStatus() { return Status; }
 }
 
 

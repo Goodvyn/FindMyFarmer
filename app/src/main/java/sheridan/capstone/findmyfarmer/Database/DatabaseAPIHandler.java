@@ -83,8 +83,7 @@ public class DatabaseAPIHandler extends AsyncTask<Object,Object,String> {
 
         params.put("FarmID", String.valueOf(farmProduct.getFarmerID()));
         params.put("ProductID", String.valueOf(farmProduct.getProductID()));
-        params.put("Quantity",String.valueOf(farmProduct.getQuantity()));
-        params.put("Unit",String.valueOf(farmProduct.getUnit()));
+        params.put("Status",String.valueOf(farmProduct.getStatus()));
 
         return new JSONObject(params);
     }
@@ -193,8 +192,7 @@ public class DatabaseAPIHandler extends AsyncTask<Object,Object,String> {
 
                 params.put("FarmID", farmProduct.getFarmerID());
                 params.put("ProductID", farmProduct.getProductID());
-                params.put("Quantity",String.valueOf(farmProduct.getQuantity()));
-                params.put("Unit",String.valueOf(farmProduct.getUnit()));
+                params.put("Status",String.valueOf(farmProduct.getStatus()));
 
                 jsonArray.put(params);
             }
@@ -319,8 +317,7 @@ public class DatabaseAPIHandler extends AsyncTask<Object,Object,String> {
         params.put("FarmProductID", String.valueOf(farmProduct.getFarmProductID()));
         params.put("FarmID", String.valueOf(farmProduct.getFarmerID()));
         params.put("ProductID", String.valueOf(farmProduct.getProductID()));
-        params.put("Quantity",String.valueOf(farmProduct.getQuantity()));
-        params.put("Unit",String.valueOf(farmProduct.getUnit()));
+        params.put("Status",String.valueOf(farmProduct.getStatus()));
 
         return new JSONObject(params);
     }

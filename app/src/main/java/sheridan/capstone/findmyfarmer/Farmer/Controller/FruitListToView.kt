@@ -12,8 +12,23 @@ import sheridan.capstone.findmyfarmer.Entities.Product
 
 import sheridan.capstone.findmyfarmer.R
 
+
+/**
+ * @Author:  Andrei Constantinescu
+ * Description: Handles the recycler view for the fruit list in the farm page.
+ * @param: List<Product> A list of products
+ * @param: onItemClickListener for the onclick interaction with the recycler view
+ * Date Modified: December 14th, 2020
+ **/
+
+
 class FruitListToView (private val FruitList: List<Product>, private val listener: FruitListToView.OnItemClickListener)
     : RecyclerView.Adapter<FruitListToView.MyViewHolder>() {
+
+    /*
+    `
+        Sets up the fruit list view.
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
         val itemView = LayoutInflater.from(parent.context).inflate(
@@ -35,7 +50,7 @@ class FruitListToView (private val FruitList: List<Product>, private val listene
         }
         holder.Fruit_Name.text = currentItem.productName
         holder.Fruit_Cat.text = currentItem.productCategory
-        holder.Fruit_quantity.text = currentItem.quantity.toString() + " " + currentItem.unit.toString()
+        holder.Fruit_quantity.text = currentItem.status
     }
 
 
