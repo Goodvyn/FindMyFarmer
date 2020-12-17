@@ -8,6 +8,7 @@ import android.os.Build
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.google.firebase.storage.StorageReference
@@ -21,6 +22,7 @@ import sheridan.capstone.findmyfarmer.Farmer.Controller.FarmerFruitListToView
 import sheridan.capstone.findmyfarmer.ImageHandler.DirectoryName
 import sheridan.capstone.findmyfarmer.ImageHandler.FirebaseImagehandler
 import sheridan.capstone.findmyfarmer.ImageHandler.StorageResponse
+import sheridan.capstone.findmyfarmer.R
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -117,7 +119,7 @@ class ProductManager(val activity: Activity) {
     fun AddFarmProduct(name: String,category: String,Farmid: Int,FarmProducts: ArrayList<Product>,Fruitadapter: FarmerFruitListToView,overlay: ArrayList<View>){
         DatabaseAPIHandler(activity, AsyncResponse {
             if(!(it.isNullOrBlank())){
-                var farmProduct = FarmProduct(1,Farmid,it.toInt(),0,"lb(s)")
+                var farmProduct = FarmProduct(1,Farmid,it.toInt(),"IN STOCK")
                 DatabaseAPIHandler(activity, AsyncResponse {resp ->
                     if(!(resp.isNullOrBlank())){
                         GetEditProducts(FarmProducts,Farmid,Fruitadapter,overlay)
@@ -136,18 +138,19 @@ class ProductManager(val activity: Activity) {
     /*
         Updates the Quantity and the Unit of the Quantity
     */
-    fun UpdateQuantity(quantity: Int,unit:String,productId: Int,farmid: Int,editText: EditText){
+    fun UpdateStatus(status:String,productId: Int,farmid: Int,productStatus: Spinner){
         DatabaseAPIHandler(activity, AsyncResponse {
             if(!(it.isNullOrBlank())){
                 var farmProduct = ObjectConverter.convertStringToObject(it,FarmProduct::class.java,false) as FarmProduct
                 if(farmProduct != null){
-                    farmProduct.quantity = quantity
-                    farmProduct.unit = unit
+                    farmProduct.status = status
                     DatabaseAPIHandler(activity, AsyncResponse {resp ->
                         if(!(resp.isNullOrBlank())){
-                            editText.setText("${quantity}")
+                            var measurements = activity.resources.getStringArray(R.array.Product_Status)
+                            var index = measurements.indexOf(status)
+                            productStatus.setSelection(index)
                         }
-                    }).execute("/UpdateFarmProductQuantity",farmProduct)
+                    }).execute("/UpdateFarmProductStatus",farmProduct)
                 }
             }else{
                 Toast.makeText(activity,"Couldnt find this product in this farm's Inventory",Toast.LENGTH_SHORT).show()
@@ -184,8 +187,7 @@ class ProductManager(val activity: Activity) {
             if(!(resp.isNullOrBlank())){
                 var farmProduct = ObjectConverter.convertStringToObject(resp,FarmProduct::class.java,false) as FarmProduct
                 if (farmProduct != null){
-                    Productlistdata.quantity = farmProduct.quantity
-                    Productlistdata.unit = farmProduct.unit
+                    Productlistdata.status = farmProduct.status
                     FarmProducts.add(Productlistdata)
                     overlay[0].visibility = View.INVISIBLE
                     overlay[1].visibility = View.INVISIBLE

@@ -2,7 +2,8 @@ package sheridan.capstone.findmyfarmer.Users
 
 /**
  * Author:  Andrei Constantinescu
- * Sets up the Anonymous activity.
+ * Sets up the Anonymous activity that allows the user to browse without signing up/logging in
+ * Date Modified: December 14th, 2020
  **/
 
 import android.content.Intent

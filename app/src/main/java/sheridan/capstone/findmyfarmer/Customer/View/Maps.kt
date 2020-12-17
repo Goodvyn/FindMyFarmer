@@ -1,11 +1,7 @@
 
 package sheridan.capstone.findmyfarmer.Customer.View
 
-/**
- * Author:  Andrei Constantinescu
- * Sets up the map view
- * @Return maps fragment view
- **/
+
 
 import android.Manifest
 import android.app.Activity
@@ -54,13 +50,16 @@ import sheridan.capstone.findmyfarmer.Users.CustomerActivity
 import sheridan.capstone.findmyfarmer.Users.FarmerActivity
 import java.util.*
 
+/**
+ * @Author:  Andrei Constantinescu
+ * Description: Sets up the map view
+ * Date Modified: December 14th, 2020
+ **/
+
 class Maps : Fragment(),OnMapReadyCallback,GoogleApiClient.ConnectionCallbacks,
     GoogleApiClient.OnConnectionFailedListener,
     LocationListener {
 
-    /*
-    * @return Farmers Map fragment that instantiates the map view for the list
-    */
     private lateinit var mapview: MapView
     private lateinit var mMap: GoogleMap
 
@@ -104,7 +103,6 @@ class Maps : Fragment(),OnMapReadyCallback,GoogleApiClient.ConnectionCallbacks,
         mapview.onResume()
 
         mapview.getMapAsync(this)
-
 
 
         return View
@@ -268,6 +266,11 @@ class Maps : Fragment(),OnMapReadyCallback,GoogleApiClient.ConnectionCallbacks,
 
 
     private val MY_PERMISSIONS_REQUEST_LOCATION = 99
+
+  /*
+  *@author: Andrei Constantinescu
+  *Checks if the user has accepted map permission.
+   */
     private fun checkLocationPermission() {
         if (ContextCompat.checkSelfPermission(
                 requireActivity(),

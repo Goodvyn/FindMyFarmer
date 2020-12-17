@@ -21,6 +21,13 @@ import sheridan.capstone.findmyfarmer.Entities.Product;
  * Date Modified: December 14th, 2020
  **/
 public class ObjectConverter {
+    /**
+     * Takes the Json formatted strings and converts them to object(s) specified.
+     * @param response The string to be converted to an object(s)
+     * @param cls the type of object it has to be converted to
+     * @param listOrNot is this a list of objects or a single instance of an object
+     * @return object(s) that can be later casted to the right type of class
+     */
     public static Object convertStringToObject(String response, Type cls, boolean listOrNot){
 
         if(listOrNot){
@@ -57,7 +64,7 @@ public class ObjectConverter {
                     object = farmProduct;
                 } else if (cls == Farm.class) {
                     Farm farm = new Gson().fromJson(response, cls);
-                    object = farm;
+                    object = farm ;
                 }
 
                 return object;

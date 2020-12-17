@@ -30,10 +30,9 @@
     <string name="_905_768_7654">(905)-768-7654</string>
     <string name="support_findmyfarmer_org">support@findmyfarmer.org</string>
 
-    <string-array name="Product_Measurement_Units">
-        <item>Quantity</item>
-        <item>Kg(s)</item>
-        <item>lb(s)</item>
-        <item>Liter(s)</item>
+    <string-array name="Product_Status">
+        <item>IN STOCK</item>
+        <item>OUT OF STOCK </item>
+        <item>LOW QUANTITY</item>
     </string-array>
 </resources>

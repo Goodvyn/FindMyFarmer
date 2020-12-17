@@ -13,16 +13,14 @@ public class Product {
     private String ProductCategory;
 
     //Helper properties
-    private int Quantity;
     private String image;
-    private String Unit;
+    private String Status;
 
     //Main constructor
-    public Product(int ProductID, String ProductName,String ProductCategory,int Quantity){
+    public Product(int ProductID, String ProductName,String ProductCategory){
         this.ProductID = ProductID;
         this.ProductName = ProductName;
         this.ProductCategory = ProductCategory;
-        this.Quantity = Quantity;
     }
 
     //getters
@@ -31,16 +29,14 @@ public class Product {
     public String getProductName() { return ProductName; }
 
     //Helper getters
-    public int getQuantity() { return Quantity; }
     public String getImage() { return image; }
-    public String getUnit() { return Unit; }
+    public String getStatus(){return Status; }
 
     //setters
     public void setProductCategory(String productCategory) { ProductCategory = productCategory; }
     public void setProductName(String productName) { ProductName = productName; }
 
     //Helper setters
-    public void setQuantity(int quantity) { Quantity = quantity; }
     public void setImage(String image) { this.image = image; }
-    public void setUnit(String unit) { Unit = unit; }
+    public void setStatus(String status) { Status = status; }
 }

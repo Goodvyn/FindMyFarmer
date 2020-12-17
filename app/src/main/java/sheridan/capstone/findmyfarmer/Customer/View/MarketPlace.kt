@@ -2,10 +2,7 @@
 
 package sheridan.capstone.findmyfarmer.Customer.View
 
-/**
- * Author:  Andrei Constantinescu
- * Sets up the account settings
- **/
+
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
@@ -28,11 +25,19 @@ import sheridan.capstone.findmyfarmer.Entities.Farm
 import sheridan.capstone.findmyfarmer.FarmerListing.Controller.FarmListToView
 import sheridan.capstone.findmyfarmer.R
 
+/**
+ * @Author:  Andrei Constantinescu
+ * Description:Sets up the Market View
+ * Date Modified: December 14th, 2020
+ **/
+
 
 class MarketPlace : Fragment(),
     FarmListToView.OnItemClickListener {
 
     /*
+    * The recycler view and all the database code.
+    * The API endpoints are also called here.
     * @return MarketPlace fragment view
     */
     private lateinit var viewModel : SharedViewModel
