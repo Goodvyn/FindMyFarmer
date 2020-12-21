@@ -194,9 +194,11 @@ class FarmManager : Fragment(){
 
                 updateFarm.updatefarm(farm)
 
-                val i = Intent(activity, FarmerActivity::class.java)
-                startActivity(i)
-                (activity as Activity?)!!.overridePendingTransition(0, 0)
+//                val i = Intent(activity, FarmerActivity::class.java)
+//                startActivity(i)
+//                (activity as Activity?)!!.overridePendingTransition(0, 0)
+
+                this.findNavController().navigate(R.id.action_fragment_farm_manager_to_nav_manage_hub)
             }
         }
     }

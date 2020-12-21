@@ -126,6 +126,9 @@
             app:popEnterAnim="@anim/left_to_right"
             app:popExitAnim="@anim/exit_left_to_right"
             app:destination="@id/fragment_photo_picker" />
+        <action
+            android:id="@+id/action_fragment_farm_manager_to_nav_manage_hub"
+            app:destination="@id/nav_manage_hub" />
     </fragment>
 
 
@@ -140,7 +143,11 @@
         android:id="@+id/fragment_farm_add"
         android:name="sheridan.capstone.findmyfarmer.Farmer.View.FarmAddFragment"
         android:label="FarmAddFragment"
-        tools:layout="@layout/fragment_farm_add"/>
+        tools:layout="@layout/fragment_farm_add">
+        <action
+            android:id="@+id/action_fragment_farm_add_to_nav_manage_hub"
+            app:destination="@id/nav_manage_hub" />
+    </fragment>
 
 
     <fragment

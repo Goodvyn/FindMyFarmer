@@ -13,6 +13,7 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_farm_add.*
 import sheridan.capstone.findmyfarmer.Customer.Model.ImageDialog
 import sheridan.capstone.findmyfarmer.Customer.Model.SharedViewModel
@@ -147,9 +148,11 @@ class FarmAddFragment(): Fragment() {
                     AddFarm.addfarm(farm)
 
 
-                    val i = Intent(activity, FarmerActivity::class.java)
-                    startActivity(i)
-                    (activity as Activity?)!!.overridePendingTransition(0, 0)
+//                    val i = Intent(activity, FarmerActivity::class.java)
+//                    startActivity(i)
+//                    (activity as Activity?)!!.overridePendingTransition(0, 0)
+
+                    this.findNavController().navigate(R.id.action_fragment_farm_add_to_nav_manage_hub)
 
                 }
             }
